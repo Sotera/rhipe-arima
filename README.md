@@ -42,8 +42,8 @@ A base example is provided, working on the Flight Data that can be found [here](
 
 The first argument after rhipe_arima.R is the input file.  
 The second is the output directory.  
-The third is how to aggregate the data.  Possible values for this third argument are __days,hours,minutes,secs__
-The fourth is the threshold, in standard deviations, a residual must be above to be emitted   
+The third is how to aggregate the data.  Possible values for this third argument are __days,hours,minutes,secs__<br/>
+The fourth is the threshold, in standard deviations, a residual must be above to be emitted
 
 
 Other Information
