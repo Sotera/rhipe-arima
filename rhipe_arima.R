@@ -1,14 +1,15 @@
 args<-commandArgs(TRUE)
 
-if (length(args) < 3) {
+if (length(args) < 4) {
     # we want to throw an error and exit
-    print("This script requires arguments in the form of INPUT_PATH OUTPUT_PATH PERIOD(days,hours,minutes,secs)")
+    print("This script requires arguments in the form of INPUT_PATH OUTPUT_PATH PERIOD(days,hours,minutes,secs) STANDARD_DEV_THRESHOLD")
     q(save="no",status=1)
 }
 
 input_path = args[1]
 output_path = args[2]
 period = args[3]
+stdev_threshold = args[4]
 intermediate_output_path = paste("/tmp",output_path, sep="")
 
 library(Rhipe)
@@ -19,19 +20,19 @@ column_delimiter = "\t"
 ####################
 # Ugly code - probably could be far more clever using R properly
 ####################
-if (length(args) > 4) {
-    if (args[4] == "--delim") {
-        column_delimiter = args[5]
-    } else if (args[4] == "--cluster-config") {
-        source(args[5])
+if (length(args) > 5) {
+    if (args[5] == "--delim") {
+        column_delimiter = args[6]
+    } else if (args[5] == "--cluster-config") {
+        source(args[6])
     }
 }
 
-if (length(args) == 7) {
-    if (args[6] == "--delim") {
-        column_delimiter = args[7]
-    } else if (args[6] == "--cluster-config") {
-        source(args[7])
+if (length(args) == 8) {
+    if (args[7] == "--delim") {
+        column_delimiter = args[8]
+    } else if (args[7] == "--cluster-config") {
+        source(args[8])
     }
 }
 
@@ -73,9 +74,11 @@ arima_map <- expression({
         arima_seq$freq[is.na(arima_seq$freq)]<-0 #replaces NA's with 0's
         invisible(mod<-auto.arima(ts(arima_seq$freq))) #fits the data to the arima model, invisible prevents stdout
         resid<-mod$resid/sd(mod$resid) #calculates standardized residuals
-        ind<-which(abs(resid)>4) #finds the indices of the std residuals above a threshold
+        #ind<-which(abs(resid)>4) #finds the indices of the std residuals above a threshold
+        ind<-which(abs(resid)>stdev_threshold) #finds the indices of the std residuals above a threshold
         if (length(ind) > 0) {
             out<-cbind(as.character(arima_seq$empty[ind]),as.character(resid[ind]))#collects origin, date, and residual
+            #out<-cbind(as.character(arima_seq$empty),as.character(resid))#collects origin, date, and residual
             out_df <- data.frame(out)
             out_df$id <- apply(out_df, 1, function(row) r$id[1])
             names(out_df) <- c("dt","std_res", "id")
