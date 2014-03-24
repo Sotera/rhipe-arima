@@ -17,6 +17,19 @@ Analytic Requirements
 ---------------------
 *  R packages forecast and chron
 
+```R
+> installed.packages()
+# make sure all packages are >= 3.0.0 
+# if not run the below update and check again
+> update.packages(checkBuilt = F, ask = F)
+
+# for some reason codetools did not update the first
+# time but did the second
+> update.packages(checkBuilt = T, ask = F)
+
+# install additional packages
+> install.packages(c("forecast", "chron"))
+```
 
 Input
 -----
