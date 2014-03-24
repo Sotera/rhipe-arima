@@ -9,7 +9,7 @@ if (length(args) < 4) {
 input_path = args[1]
 output_path = args[2]
 period = args[3]
-stdev_threshold = args[4]
+stdev_threshold = as.numeric(args[4])
 intermediate_output_path = paste("/tmp",output_path, sep="")
 
 library(Rhipe)
