@@ -58,6 +58,13 @@ The second is the output directory.
 The third is how to aggregate the data.  Possible values for this third argument are __days,hours,minutes,secs__<br/>
 The fourth is the threshold, in standard deviations, a residual must be above to be emitted
 
+<img height="400" src="https://raw.github.com/wiki/Sotera/rhipe-arima/images/sample.png" />
+
+This image shows a sample of how you could visualize the results of
+this example.  It shows number of departures per day for each airport
+and using the results of the analytic plots marks the days when the
+standardized residual is greater than 4.
+
 
 Other Information
 -----------------
