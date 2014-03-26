@@ -17,7 +17,7 @@ Analytic Requirements
 ---------------------
 *  R packages forecast and chron
 
-```R
+```
 > installed.packages()
 # make sure all packages are >= 3.0.0 
 # if not run the below update and check again
