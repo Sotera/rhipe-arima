@@ -6,13 +6,6 @@ This implementation of the ARIMA (AutoRegressive Integrated Moving Average) algo
 Rhipe webpage: <a href="http://www.datadr.org/getpack.html">Rhipe</a>
 
 
-Rhipe Requirements
-------------------
-- R
-- Hadoop (CDH 4.3.0 is our target)
-- Google Protocol Buffers (2.4.1)
-
-
 Analytic Requirements
 ---------------------
 *  R packages forecast and chron
