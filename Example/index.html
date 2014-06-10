@@ -1,0 +1,38 @@
+---
+layout: base
+---
+<h3><a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h3>
+
+<p>A base example is provided, working on the Flight Data that can be found <a href="http://stat-computing.org/dataexpo/2009/the-data.html">here</a></p>
+<pre>
+<code>
+    $ Rscript rhipe_arima.R /tmp/airport_deps_sample /analytics/arima/airport days 4
+</code>
+</pre>
+<ul>
+    <li>
+        The first argument after rhipe_arima.R is the input file.
+    </li>
+    <li>
+        The first argument after rhipe_arima.R is the input file.
+    </li>
+    <li>
+        The third is how to aggregate the data. Possible values for this third argument are days,hours,minutes,secs.
+    </li>
+    <li>
+        The fourth is the threshold, in standard deviations, a residual must be above to be emitted
+    </li>
+</ul>
+<img src="/rhipe-arima/img/data.png"/>
+<br/>
+<br/>
+<br/>
+<p>
+    This image shows a sample of how you could visualize the results of this example. It shows number of departures per day for each airport and using the results of the analytic
+    plots marks the days when the standardized residual is greater than 4.
+</p>
+
+<h3><a name="note" class="anchor" href="#note"><span class="octicon octicon-link"></span></a>Note</h3>
+<p>
+    Please make sure you can read and write from the <strong>/tmp</strong> directory as well as any other directory you specify.
+</p>
