@@ -1,0 +1,18 @@
+---
+layout: base
+---
+
+<h3><a name="requirements" class="anchor" href="#requirements"><span class="glyphicon glyphicon-link"></span></a> Known Issues</h3>
+Running this analytic on the XData VM results in an error like:
+<pre>
+    <code>
+Error : .onLoad failed in loadNamespace() for 'rJava', details:
+  call: dyn.load(file, DLLpath = DLLpath, ...)
+  error: unable to load shared object '/usr/local/lib/R/site-library/rJava/libs/rJava.so':
+libjvm.so: cannot open shared object file: No such file or directory
+Error: package or namespace load failed for ‘rJava’
+Execution halted
+    </code>
+</pre>
+
+The XData VM (v. 0.2.1) has a known bug; please see the steps on the <a href="/rhipe-arima/HowToBuild/">How To Build</a> page for steps in rectifying this issue.
